@@ -13,15 +13,23 @@ const initialState = {
 
 const counterReducer = (state = initialState, action) => {
     console.log(action, state)
-    switch (action.payload) {
-        case 'INC_CUSTOM': {
-            return {...state, counterValue: state.counterValue + 'info'}
-        }
-    }
-    switch (action.type) {
-        case 'INC': {
+
+    switch
+        (action.type) {
+        case
+        'INC'
+        : {
 
             return {...state, counterValue: state.counterValue + 1};
+        }
+            ;
+
+        case
+        'INC_CUSTOM'
+        : {
+            return {
+                ...state,counterValue:state.counterValue + action.paiload
+            }
         }
         case 'DEC': {
             return {...state, counterValue: state.counterValue - 1};

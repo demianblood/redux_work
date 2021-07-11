@@ -35,6 +35,14 @@ const SomeChildComponent = () => {
 
 function App() {
     const dispatch = useDispatch();
+
+    function getNumber(e) {
+        e.preventDefault()
+        dispatch({type: 'INC_CUSTOM', paiload: +
+                e.target[0].value})
+        e.target[0].value = ''
+    }
+
     return (
         <div className="App">
 
@@ -52,10 +60,11 @@ function App() {
                     dispatch({type: 'RESET'})
                 }}>reset
                 </button>
-                <button onClick={() => {
-                    dispatch({type: 'INC', payload: "info"})
-                }}><input type="text" name="info"/>inc custom
-                </button>
+                <form onSubmit={getNumber}>
+                    <input type='number' name='number'/>
+                    <button>ok
+                    </button>
+                </form>
 
             </div>
             < SomeChildComponent/>

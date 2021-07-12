@@ -8,7 +8,9 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 
 const initialState = {
-    counterValue: 0
+    counterValue: 0,
+    users: [],
+    posts: []
 }
 
 const counterReducer = (state = initialState, action) => {
@@ -16,27 +18,13 @@ const counterReducer = (state = initialState, action) => {
 
     switch
         (action.type) {
-        case
-        'INC'
-        : {
-
-            return {...state, counterValue: state.counterValue + 1};
+        case 'SET_USERS': {
+            return {...state, users: action.payload}
         }
             ;
 
-        case
-        'INC_CUSTOM'
-        : {
-            return {
-                ...state,counterValue:state.counterValue + action.paiload
-            }
-        }
-        case 'DEC': {
-            return {...state, counterValue: state.counterValue - 1};
-        }
-            ;
-        case 'RESET': {
-            return {...state, counterValue: 0};
+        case 'SET_POSTS': {
+            return {...state, posts: action.payload}
         }
             ;
         default:

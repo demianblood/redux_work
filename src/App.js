@@ -54,7 +54,7 @@ const TodosList = ({todos, isLoading}) => {
                     <h4>{todo.title}</h4>
                     <p>{todo.description}</p>
                     <p>Is completed:{todo.completed.toString()}</p>
-                    <button onClick={() => updateTodo()}>Update Todos</button>
+                    <button>Update Todos</button>
                     <span>Created At:{new Date(todo.createdAt).toLocaleString()}</span>
                     <hr/>
                 </div>
@@ -99,7 +99,7 @@ export default function App() {
 
     }
     const updateTodo = async (completed) => {
-
+console.log("im work")
         if ({completed} = false) return {completed} = true;
         const response = fetch("http://localhost:8888/update-todo/:id", {
             method: "PATCH",
@@ -118,6 +118,7 @@ export default function App() {
         <div>
             <CreateTodoForm onSubmit={onTodoCreate}/>
             <TodosList todos={todos} isLoading={isLoading}/>
+            <button onClick={()=>updateTodo()}>Update Todos</button>
         </div>
     );
 

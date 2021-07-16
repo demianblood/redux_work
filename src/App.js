@@ -20,7 +20,7 @@
 //
 //
 // }
-import {useEffect, useState} from "react";
+
 
 // export default function App() {
 //     let [usernameInputState, setUsernameInputState] = useState('asdasd')
@@ -40,20 +40,14 @@ import {useEffect, useState} from "react";
 //
 //
 // }
-import Form from "./Form";
+
+import Users from "./Components/Users/Users";
 
 export default function App() {
-    let [users, setUser] = useState([]);
-    useEffect(() => {
-        fetch('http://jsonplaceholder.typicode.com/users')
-            .then(value => value.json() )
-            .then(value => {
-                setUser([...value])
-            })
-    },[])
+
     return (
         <div>
-            <Form users={users}/>
+            <Users/>
         </div>
     );
 

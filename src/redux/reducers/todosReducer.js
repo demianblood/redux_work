@@ -1,4 +1,10 @@
-import {ADD_TODOS, SET_LOADING_TRUE, SET_LOADING_FALSE, PUSH_NEW_TODO, UPDATE_TODO} from "../actionTypes";
+import {
+    ADD_TODOS,
+    SET_LOADING_TRUE,
+    SET_LOADING_FALSE,
+    PUSH_NEW_TODO,
+    UPDATE_TODO
+} from "../actionTypes/actionTypesIndex";
 
 
 const initialState = {
@@ -30,10 +36,14 @@ export const todosReducer = (state = initialState, action) => {
             }
         }
         case UPDATE_TODO: {
+            let find = state.todos.find(todo => todo.id === action.payload.id);
+            console.log(find);
+            find.completed=action.payload.completed
             return {
-                ...state, completed: true
+                ...state
             }
         }
+
         default:
             return state
     }

@@ -3,7 +3,8 @@ import {
     SET_LOADING_TRUE,
     SET_LOADING_FALSE,
     PUSH_NEW_TODO,
-    UPDATE_TODO
+    UPDATE_TODO,
+    DELETE_TODO
 } from "../actionTypes/actionTypesIndex";
 
 
@@ -41,6 +42,11 @@ export const todosReducer = (state = initialState, action) => {
             find.completed=action.payload.completed
             return {
                 ...state
+            }
+        }
+        case DELETE_TODO:{
+            return {
+                ...state,todos: state.todos.filter(value => value.id !== action.payload)
             }
         }
 

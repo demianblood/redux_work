@@ -5,8 +5,8 @@ import {
     setLoadingFalse,
     appTodos,
     pushNewTodo,
-    updTodo,
-    // delTodo
+    updTodo, delTodo,
+
 } from "./redux/actionCriaters/actionCriatesIndex";
 import {CreateTodoForm} from "./components/CreateTodoForm/CreateTodoForm";
 import {TodosList} from "./components/TodosList/TodosList";
@@ -60,11 +60,11 @@ export default function App() {
         dispatch(updTodo(data))
     }
     const deleteTodo = async (id) => {
-         await fetch("http://localhost:8888/delete-todo/" + id, {
+        await fetch("http://localhost:8888/delete-todo/" + id, {
             method: "DELETE",
             body: JSON.stringify({id})
         });
-
+        dispatch(delTodo(id));
     }
 
     return (
